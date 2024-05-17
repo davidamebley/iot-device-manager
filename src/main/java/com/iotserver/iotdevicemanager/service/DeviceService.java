@@ -28,4 +28,9 @@ public class DeviceService {
         device.setStatus(newStatus);
         return deviceRepository.save(device);
     }
+
+    public String executeCommand(Long deviceId, String command) {
+        // Logic to execute command
+        return "Command executed: " + command;
+    }
 }
