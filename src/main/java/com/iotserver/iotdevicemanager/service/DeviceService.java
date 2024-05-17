@@ -12,7 +12,20 @@ public class DeviceService {
         this.deviceRepository = deviceRepository;
     }
 
-    public Device RegisterDevice(Device device) {
+    public Device registerDevice(Device device) {
+        return deviceRepository.save(device);
+    }
+
+    public String getDeviceStatus(Long deviceId) {
+        Device device = deviceRepository.findById(deviceId)
+                .orElseThrow(() -> new RuntimeException("Device not found"));
+        return device.getStatus();
+    }
+
+    public Device updateDeviceStatus(Long deviceId, String newStatus){
+        Device device = deviceRepository.findById(deviceId)
+                .orElseThrow(() -> new RuntimeException("Device not found"));
+        device.setStatus(newStatus);
         return deviceRepository.save(device);
     }
 }
