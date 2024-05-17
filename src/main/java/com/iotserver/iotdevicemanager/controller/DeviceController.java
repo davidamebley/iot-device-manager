@@ -33,4 +33,10 @@ public class DeviceController {
         Device updatedDevice = deviceService.updateDeviceStatus(deviceId, status);
         return ResponseEntity.ok(updatedDevice);
     }
+
+    @PostMapping("/{deviceId}/commands")
+    public ResponseEntity<String> executeDeviceCommand(@PathVariable Long deviceId, @RequestBody String command){
+        String result = deviceService.executeCommand(deviceId, command);
+        return ResponseEntity.ok(result);
+    }
 }
