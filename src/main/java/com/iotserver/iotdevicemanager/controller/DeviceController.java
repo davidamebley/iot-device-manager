@@ -4,10 +4,7 @@ import com.iotserver.iotdevicemanager.model.Device;
 import com.iotserver.iotdevicemanager.service.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/devices")
@@ -23,5 +20,11 @@ public class DeviceController {
     public ResponseEntity<Device> registerDevice(@RequestBody Device device){
         Device savedDevice = deviceService.registerDevice(device);
         return ResponseEntity.ok(savedDevice);
+    }
+
+    @GetMapping("/{deviceId}/status")
+    public ResponseEntity<String> getDeviceStatus(@PathVariable Long deviceId){
+        String status = deviceService.getDeviceStatus(deviceId);
+        return ResponseEntity.ok(status);
     }
 }
