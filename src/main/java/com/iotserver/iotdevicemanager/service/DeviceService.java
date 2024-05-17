@@ -1,5 +1,6 @@
 package com.iotserver.iotdevicemanager.service;
 
+import com.iotserver.iotdevicemanager.model.Device;
 import com.iotserver.iotdevicemanager.repository.DeviceRepository;
 import org.springframework.stereotype.Service;
 
@@ -11,5 +12,7 @@ public class DeviceService {
         this.deviceRepository = deviceRepository;
     }
 
-//    TODO: Service methods for device management
+    public Device RegisterDevice(Device device) {
+        return deviceRepository.save(device);
+    }
 }
