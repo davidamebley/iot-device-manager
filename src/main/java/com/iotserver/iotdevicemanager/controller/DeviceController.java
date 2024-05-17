@@ -27,4 +27,10 @@ public class DeviceController {
         String status = deviceService.getDeviceStatus(deviceId);
         return ResponseEntity.ok(status);
     }
+
+    @PutMapping("/{deviceId}/status")
+    public ResponseEntity<Device> updateDeviceStatus(@PathVariable Long deviceId, @RequestBody String status){
+        Device updatedDevice = deviceService.updateDeviceStatus(deviceId, status);
+        return ResponseEntity.ok(updatedDevice);
+    }
 }
